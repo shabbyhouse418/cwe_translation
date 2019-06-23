@@ -2,36 +2,54 @@
 
 cwe版本: 3.2
 翻译效果:
-!()[effect.png]
-
 
 [CWE™社区](http://cwe.mitre.org/index.html)
 
-document.add_heading('Weakness ID: ' + ID, level=0)
+![cwe.png](cwe.png)
 
-    one = document.add_paragraph()
-    one.add_run('提交日期 ' + Previous_Entry_Name).font.size = Pt(6)
-    one.add_run('---> 修改日期 ' + Modification_Date).font.size = Pt(6)
-    one.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    one = document.add_paragraph(style='List Bullet')
+```python
+def write_header():
+    document = open('./document/CWE翻译计划.md','w')
+    document.write("## <center>CWE翻译计划</center>")
+    document.write('\n')
+    document.write("<p align=\"right\">-- by UESTC 418</p>")
+    document.write('\n')
+    document.write("**贡献人员：**<br>")
+    document.write('\n')
+    document.write("&ensp;*Mardan & Szg(shang Cr7-joker) & LJIJCJ & Michael Tan*\n")
+    document.write('\n\n\n')  
+    document.close()
 
-    one.add_run('Weakness Name:\n').bold = True
-    one.add_run("\ten: --> " + Name_en).italic = True
-    one.add_run("\tzh: -->" + Name_zh).italic = True
-
-    one = document.add_paragraph(style='List Bullet')
-    one.add_run('Abstraction: ').bold = True
-    one.add_run(Abstraction).italic = True
-    one.add_run('\tStructure: ').bold = True
-    one.add_run(Structure).italic = True
-    one.add_run('\tStatus: ').bold = True
-    one.add_run(Status).italic = True
-    one = document.add_paragraph(style='List Bullet')
-    one.add_run('Applicable_Platforms: ').bold = True
-    one.add_run(Applicable_Platforms).italic = True
-    one.add_run('\n')   
-
-    document.add_heading('简单描述:', level=3)
-    one = document.add_paragraph()
-    one.add_run("\t" + Description_zh, 'Body Text Char')
-    one.add_run('\n')   
+def document_format(ID, Previous_Entry_Name, Modification_Date, Name_zh, Name_en, Abstraction, Structure, Status, Description_zh, Description_en, Extended_Description_zh, Extended_Description_en):
+    document = open('./document/CWE翻译计划.md','a')
+    document.write("## <font color=gray>**CWE - " + ID + "\t" + Name_en + "**</font><br>")
+    document.write('\n')
+    document.write("中文：**" + Name_zh + "**<br>")
+    document.write('\n')
+    '''
+    document.write('\n---')
+    document.write('\n')
+    document.write("**Weakness ID : **" + ID + "<br>")
+    document.write('\n')
+    document.write("**Structure : **" + Structure + "<br>")
+    document.write('\n')
+    document.write("**Abstraction : **" + Abstraction + "<br>")
+    document.write('\n')
+    document.write("**Status : **" + Status + "<br>")
+    document.write('\n\n')
+    document.write('---')
+    document.write('\n\n')
+    '''
+    document.write("- ### Description")
+    document.write('\n')
+    #document.write(Description_en)
+    #document.write('\n')
+    document.write("&ensp;" + Description_zh)
+    document.write('\n')
+    document.write("- ### Extended Description")
+    document.write('\n')
+    #document.write(Extended_Description_en)
+    #document.write('\n')
+    document.write("&ensp;" + Extended_Description_zh)
+    document.write('<br>\n\n')
+```
